@@ -1,0 +1,16 @@
+/*  variables */
+@use "./abstracts/variables";
+
+/* resets */
+@use "./resets/resets";
+
+/* base */
+@use "./base/body";
+
+/* components */
+@use "./components/Navbar";
+@use "./components/productDisplay";
+@use "./components/Desc";
+
+/* utils */
+@use "./utils/breakpoints";

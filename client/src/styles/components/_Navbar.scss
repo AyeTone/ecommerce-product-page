@@ -1,0 +1,60 @@
+@use "../abstracts/variables" as *;
+
+.navbar {
+  position: relative;
+  padding: 20px;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__left {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+
+    .title {
+      font-size: $xlFz;
+      font-weight: $boldWg;
+    }
+
+    .menuBtn {
+      margin-right: 15px;
+      transform: translateY(3px);
+    }
+
+    .dropdown {
+      position: absolute;
+
+      top: 0;
+      left: 1000px;
+      z-index: 1;
+
+      background-color: $backdrop;
+
+      &__list {
+        height: 100vh;
+        width: 70%;
+
+        background-color: $white;
+        list-style-type: none;
+
+        .list-items {
+          font-weight: $boldWg;
+          margin: 20px 0;
+        }
+      }
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    .avatar {
+      width: 25px;
+    }
+  }
+}

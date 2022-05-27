@@ -1,0 +1,29 @@
+/* variables */
+
+//Primary
+$orange: hsl(26, 100%, 55%);
+$paleOrange: hsl(25, 100%, 94%);
+
+//Neutral
+$darkBlue: hsl(220, 13%, 13%);
+$darkGrayishBlue: hsl(219, 9%, 45%);
+$grayishBlue: hsl(220, 14%, 75%);
+$white: hsl(0, 0%, 100%);
+$black: hsl(0, 0%, 0%);
+$backdrop: hsla(0, 0%, 0%, 0.75);
+
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap");
+$baseFont: "Kumbh Sans", sans-serif;
+
+//Sizes
+$baseFz: 1rem;
+$smFz: $baseFz * 0.75;
+$mdFz: $baseFz * 1.25;
+$lgFz: $baseFz * 1.5;
+$xlFz: $baseFz * 2;
+$xxlFz: $baseFz * 2.3;
+
+// Weights
+$baseWg: 400;
+$boldWg: 700;

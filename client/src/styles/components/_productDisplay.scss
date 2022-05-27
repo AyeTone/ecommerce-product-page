@@ -1,0 +1,29 @@
+@use "../abstracts/variables" as *;
+
+.productDisplay {
+  position: relative;
+  img {
+    width: 100%;
+  }
+
+  .cover {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .slide-btn {
+      margin: 0 25px;
+      width: 50px;
+      height: 50px;
+
+      padding: 0;
+      border: none;
+      border-radius: 50%;
+    }
+  }
+}
