@@ -1,0 +1,9 @@
+@use "../abstracts/variables" as *;
+@use "../utils/breakpoints" as *;
+
+.App {
+  @include breakpoint(desktop) {
+    width: 80%;
+    margin: 0 auto;
+  }
+}

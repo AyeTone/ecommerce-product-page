@@ -1,4 +1,5 @@
 @use "../abstracts/variables" as *;
+@use "../utils/breakpoints" as *;
 
 .navbar {
   position: relative;
@@ -9,10 +10,19 @@
   justify-content: space-between;
   align-items: center;
 
+  @include breakpoint(desktop) {
+    border-bottom: 0.2px solid grey;
+  }
+
   &__left {
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+
+    @include breakpoint(desktop) {
+      flex-direction: row;
+      justify-content: center;
+    }
 
     .title {
       font-size: $xlFz;
@@ -22,6 +32,10 @@
     .menuBtn {
       margin-right: 15px;
       transform: translateY(3px);
+
+      @include breakpoint(desktop) {
+        display: none;
+      }
     }
 
     .dropdown {
@@ -33,6 +47,12 @@
 
       background-color: $backdrop;
 
+      @include breakpoint(desktop) {
+        position: relative;
+        background-color: unset;
+        left: 0 !important;
+      }
+
       &__list {
         height: 100vh;
         width: 70%;
@@ -40,9 +60,26 @@
         background-color: $white;
         list-style-type: none;
 
+        @include breakpoint(desktop) {
+          height: unset;
+          width: 100%;
+
+          display: flex;
+          gap: 40px;
+
+          .close {
+            display: none;
+          }
+        }
+
         .list-items {
           font-weight: $boldWg;
           margin: 20px 0;
+
+          @include breakpoint(desktop) {
+            font-weight: $baseWg;
+            color: $darkGrayishBlue;
+          }
         }
       }
     }
@@ -51,10 +88,15 @@
   &__right {
     display: flex;
     align-items: center;
-    gap: 20px;
 
     .avatar {
       width: 25px;
+      margin-left: 20px;
+
+      @include breakpoint(desktop) {
+        width: 45px;
+        margin-left: 50px;
+      }
     }
   }
 }
