@@ -26,7 +26,7 @@ const Navbar = () => {
   }
 
   function handleCart() {
-    setShowCart(true);
+    setShowCart((prev: boolean) => !prev);
   }
 
   return (
@@ -46,7 +46,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className="navbar__right">
-        <Cart onClick={() => handleCart()} />
+        <Cart className="navbar__cart" onClick={() => handleCart()} />
         <img src={Avatar} alt="avatar" className="avatar" />
       </div>
     </nav>

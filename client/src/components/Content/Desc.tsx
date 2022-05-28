@@ -1,9 +1,39 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ReactComponent as Minus } from "../../svgs/icon-minus.svg";
 import { ReactComponent as Plus } from "../../svgs/icon-plus.svg";
 import { ReactComponent as Cart } from "../../svgs/icon-cart.svg";
+import Context from "../../Context/Context";
 
 const Desc = () => {
+  const [amount, setAmount] = useState(0);
+  const [total, setTotal] = useState(125);
+  const [subTotal, setSubTotal] = useState(250);
+
+  const { setCart } = useContext(Context);
+
+  function addProduct() {
+    setAmount(amount + 1);
+  }
+
+  function removeProduct() {
+    if (amount !== 0) setAmount(amount - 1);
+  }
+
+  function addToCart() {
+    if (amount > 0) {
+      setCart((prev: number) => prev + amount);
+      setAmount(0);
+    }
+  }
+
+  useEffect(() => {
+    console.log("ran");
+    if (amount >= 1) {
+      setTotal(125 * amount);
+      setSubTotal(250 * amount);
+    }
+  }, [amount]);
+
   return (
     <div className="desc">
       <h1 className="desc__company">Sneaker Company</h1>
@@ -15,17 +45,17 @@ const Desc = () => {
       </p>
       <div className="desc__pricing">
         <div className="total-sale">
-          <p className="total">$125.00</p>
+          <p className="total">${total}.00</p>
           <p className="sale">50%</p>
         </div>
-        <s className="slashed">$250.00</s>
+        <s className="slashed">${subTotal}.00</s>
       </div>
       <div className="desc__quanity">
-        <Minus />
-        <p className="current"> 0</p>
-        <Plus />
+        <Minus onClick={() => removeProduct()} />
+        <p className="current">{amount}</p>
+        <Plus onClick={() => addProduct()} />
       </div>
-      <button className="desc__add">
+      <button onClick={() => addToCart()} className="desc__add">
         <Cart className="desc__cart" />
         <p>Add to cart</p>
       </button>

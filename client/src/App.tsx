@@ -5,9 +5,10 @@ import Context from "./Context/Context";
 
 function App() {
   const [showCart, setShowCart] = useState(false);
+  const [cart, setCart] = useState(0);
 
   return (
-    <Context.Provider value={{ showCart, setShowCart }}>
+    <Context.Provider value={{ cart, setCart, showCart, setShowCart }}>
       <div className="App">
         <Navbar />
         <Content />

@@ -63,7 +63,12 @@
 
           .label {
             color: $grayishBlue;
+            width: 80%;
             margin-bottom: 3px;
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
           }
 
           .pricing {
@@ -71,6 +76,7 @@
           }
 
           .total {
+            margin-left: 5px;
             color: $darkGrayishBlue;
             font-weight: $boldWg;
           }
