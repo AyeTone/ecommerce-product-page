@@ -1,5 +1,6 @@
 @use "../abstracts/variables" as *;
 
 body {
+  position: relative;
   font-family: $baseFont;
 }

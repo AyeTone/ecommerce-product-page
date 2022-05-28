@@ -26,7 +26,7 @@ const Desc = () => {
         <Plus />
       </div>
       <button className="desc__add">
-        <Cart className="cart" />
+        <Cart className="desc__cart" />
         <p>Add to cart</p>
       </button>
     </div>

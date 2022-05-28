@@ -59,6 +59,7 @@
 
   &__quanity {
     @include widths;
+    margin-top: 10px;
 
     display: flex;
     align-items: center;
@@ -75,6 +76,7 @@
 
   &__add {
     @include widths;
+
     display: flex;
     justify-content: center;
     gap: 15px;
@@ -86,7 +88,7 @@
     border: none;
     border-radius: 10px;
 
-    .cart > path {
+    .desc__cart > path {
       fill: white;
     }
   }

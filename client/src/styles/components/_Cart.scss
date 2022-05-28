@@ -1,0 +1,97 @@
+@use "../abstracts/variables" as *;
+
+.cart {
+  position: fixed;
+  width: 100%;
+  top: 10.5%;
+
+  display: flex;
+  justify-content: center;
+
+  &__wrapper {
+    width: 90%;
+
+    background-color: $white;
+    border-radius: 10px;
+  }
+
+  &__header {
+    padding: 20px;
+    border-bottom: 0.5px solid $grayishBlue;
+
+    .title {
+      font-weight: $boldWg;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    padding: 20px;
+    overflow-y: scroll;
+
+    display: flex;
+    flex-direction: column;
+
+    .empty {
+      height: 150px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      color: $darkGrayishBlue;
+      font-weight: $boldWg;
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+
+      .items {
+        display: flex;
+        align-items: center;
+        width: 100%;
+
+        .img {
+          max-width: 40px;
+          border-radius: 5px;
+        }
+
+        .details {
+          margin-left: 15px;
+
+          .label {
+            color: $grayishBlue;
+            margin-bottom: 3px;
+          }
+
+          .pricing {
+            color: $grayishBlue;
+          }
+
+          .total {
+            color: $darkGrayishBlue;
+            font-weight: $boldWg;
+          }
+        }
+
+        .delete {
+          width: 25px;
+          height: 25px;
+        }
+      }
+    }
+
+    .checkout {
+      margin: 0 auto;
+      width: 90%;
+      padding: 10px 0;
+
+      background-color: $orange;
+      color: white;
+      border: none;
+      border-radius: 10px;
+    }
+  }
+}

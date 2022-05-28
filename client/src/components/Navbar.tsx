@@ -1,11 +1,14 @@
-import React from "react";
+import { useContext } from "react";
 import { ReactComponent as Menu } from "../svgs/icon-menu.svg";
 import { ReactComponent as Cart } from "../svgs/icon-cart.svg";
 import { ReactComponent as Close } from "../svgs/icon-close.svg";
 import Avatar from "../images/image-avatar.png";
+import Context from "../Context/Context";
 
 const Navbar = () => {
-  const show = () => {
+  const { setShowCart } = useContext(Context);
+
+  function showMenu() {
     let dropdown = document.getElementById("dropdown") as HTMLDivElement;
     dropdown.style.cssText = `
     position: fixed;
@@ -13,23 +16,27 @@ const Navbar = () => {
     left: 0;
     width: 100%;
     `;
-  };
+  }
 
-  const close = () => {
+  function closeMenu() {
     let dropdown = document.getElementById("dropdown") as HTMLDivElement;
     dropdown.style.cssText = `
         left: 1000px;
     `;
-  };
+  }
+
+  function handleCart() {
+    setShowCart(true);
+  }
 
   return (
     <nav className="navbar">
       <div className="navbar__left">
         <h1 className="title">sneakers</h1>
-        <Menu onClick={() => show()} className="menuBtn" />
+        <Menu onClick={() => showMenu()} className="menuBtn" />
         <div id="dropdown" className="dropdown">
           <ul className="dropdown__list">
-            <Close onClick={() => close()} className="list-items close" />
+            <Close onClick={() => closeMenu()} className="list-items close" />
             <li className="list-items">Collections</li>
             <li className="list-items">Men</li>
             <li className="list-items">Women</li>
@@ -39,7 +46,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className="navbar__right">
-        <Cart />
+        <Cart onClick={() => handleCart()} />
         <img src={Avatar} alt="avatar" className="avatar" />
       </div>
     </nav>
