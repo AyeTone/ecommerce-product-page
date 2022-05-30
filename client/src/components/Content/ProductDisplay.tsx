@@ -38,36 +38,41 @@ const ProductDisplay = ({ isLightBox }: Props) => {
     },
   ]);
   const [current, setCurrent] = useState(1);
+  const [changed, setChanged] = useState(false);
 
   function nextImage() {
     if (current === 4) setCurrent(1);
     else setCurrent((prev: number) => prev + 1);
+    setChanged(true);
   }
 
   function prevImage() {
     if (current === 1) setCurrent(4);
     else setCurrent((prev: number) => prev - 1);
+    setChanged(true);
   }
-
-  useEffect(() => {
-    setCurrentShoe((prev: Shoes[]) => {
-      return prev.map((shoe) => {
-        if (shoe.isActive) {
-          return { ...shoe, isActive: false };
-        } else if (!shoe.isActive && shoe.id === current) {
-          return { ...shoe, isActive: true };
-        } else return shoe;
-      });
-    });
-  }, [current]);
 
   function selectDisplay(clicked: number) {
     setCurrent(clicked);
+    setChanged(true);
   }
 
   function toggleLightBox() {
     if (window.innerWidth >= 1020) setShowLightBox(true);
   }
+
+  useEffect(() => {
+    if (changed)
+      setCurrentShoe((prev: Shoes[]) => {
+        return prev.map((shoe) => {
+          if (shoe.isActive) {
+            return { ...shoe, isActive: false };
+          } else if (!shoe.isActive && shoe.id === current) {
+            return { ...shoe, isActive: true };
+          } else return shoe;
+        });
+      });
+  }, [current, changed]);
 
   //big display
   const shoes = currentShoe.map(({ img, id, isActive }) => {
