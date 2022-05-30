@@ -108,6 +108,7 @@
 
       &__btn {
         cursor: pointer;
+        transition: 0.3s;
 
         &:hover {
           opacity: 0.4;
@@ -126,6 +127,7 @@
 
       display: flex;
       justify-content: center;
+      align-items: center;
       gap: 15px;
 
       color: white;

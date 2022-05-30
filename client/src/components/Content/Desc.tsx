@@ -59,7 +59,7 @@ const Desc = () => {
         </div>
         <button onClick={() => addToCart()} className="add">
           <Cart className="add__cart" />
-          <p>Add to cart</p>
+          Add to cart
         </button>
       </div>
     </div>
