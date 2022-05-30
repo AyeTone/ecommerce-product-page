@@ -50,7 +50,12 @@ const Navbar = () => {
           <Cart className="cart__img" />
           {cart ? <p className="cart__count"> {cart} </p> : null}
         </div>
-        <img src={Avatar} alt="avatar" className="avatar" />
+        <img
+          onClick={() => handleCart()}
+          src={Avatar}
+          alt="avatar"
+          className="avatar"
+        />
       </div>
     </nav>
   );

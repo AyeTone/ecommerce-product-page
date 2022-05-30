@@ -63,7 +63,16 @@
 
     .selection {
       width: 100%;
+      height: 100%;
       border-radius: 15px;
+
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.3;
+      }
+
+      object-fit: fill;
     }
 
     .selected {

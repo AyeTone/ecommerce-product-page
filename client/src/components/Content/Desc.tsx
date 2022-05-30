@@ -50,15 +50,17 @@ const Desc = () => {
         </div>
         <s className="slashed">${subTotal}.00</s>
       </div>
-      <div className="desc__quanity">
-        <Minus onClick={() => removeProduct()} />
-        <p className="current">{amount}</p>
-        <Plus onClick={() => addProduct()} />
+      <div className="desc__footer">
+        <div className="quanity">
+          <Minus onClick={() => removeProduct()} className="quanity__btn" />
+          <p className="current">{amount}</p>
+          <Plus onClick={() => addProduct()} className="quanity__btn" />
+        </div>
+        <button onClick={() => addToCart()} className="add">
+          <Cart className="add__cart" />
+          <p>Add to cart</p>
+        </button>
       </div>
-      <button onClick={() => addToCart()} className="desc__add">
-        <Cart className="desc__cart" />
-        <p>Add to cart</p>
-      </button>
     </div>
   );
 };

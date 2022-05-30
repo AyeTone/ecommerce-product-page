@@ -26,7 +26,7 @@ const Cart = () => {
                 <div className="items">
                   <img className="img" src={Image} alt="cart item" />
                   <div className="details">
-                    <p className="label">Autumn Limited Edition Sneakers</p>
+                    <p className="label">Fall Limited Edition Sneakers</p>
                     <p className="pricing">
                       $125 x {cart} <span className="total">${total}.00</span>
                     </p>

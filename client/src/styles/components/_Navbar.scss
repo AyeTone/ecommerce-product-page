@@ -78,8 +78,25 @@
           margin: 20px 0;
 
           @include breakpoint(desktop) {
+            position: relative;
             font-weight: $baseWg;
             color: $darkGrayishBlue;
+
+            cursor: pointer;
+
+            &:hover {
+              color: $black;
+
+              &::after {
+                content: " ";
+                position: absolute;
+                bottom: -50px;
+                left: 0;
+                width: 100%;
+                height: 3px;
+                background-color: $orange;
+              }
+            }
           }
         }
       }
@@ -93,6 +110,9 @@
     .navbar__cart {
       position: relative;
       padding: 5px;
+      cursor: pointer;
+
+      display: flex;
 
       .cart {
         &__count {
@@ -114,10 +134,18 @@
     .avatar {
       width: 25px;
       margin-left: 20px;
+      border: 2px solid transparent;
+
+      cursor: pointer;
 
       @include breakpoint(desktop) {
         width: 45px;
-        margin-left: 50px;
+        margin-left: 30px;
+
+        &:hover {
+          border: 2px solid $orange;
+          border-radius: 50%;
+        }
       }
     }
   }

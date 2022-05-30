@@ -13,6 +13,8 @@
 
   @include breakpoint(desktop) {
     padding: 70px;
+
+    gap: unset;
   }
 
   &__company {
@@ -21,11 +23,23 @@
     font-weight: $boldWg;
 
     letter-spacing: 3px;
+
+    @include breakpoint(desktop) {
+      font-size: $smFz;
+
+      display: flex;
+      align-items: flex-end;
+      margin-bottom: 13px;
+    }
   }
 
   &__title {
     font-size: $xlFz;
     font-weight: $boldWg;
+
+    @include breakpoint(desktop) {
+      font-size: $xxlFz;
+    }
   }
 
   &__desc {
@@ -38,10 +52,18 @@
     justify-content: space-between;
     align-items: center;
 
+    @include breakpoint(desktop) {
+      display: block;
+    }
+
     .total-sale {
       display: flex;
       align-items: center;
       gap: 10px;
+
+      @include breakpoint(desktop) {
+        margin-bottom: 10px;
+      }
 
       .total {
         font-size: $lgFz;
@@ -62,39 +84,69 @@
     }
   }
 
-  &__quanity {
-    @include widths;
-    margin-top: 10px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    background-color: #f7f8fd;
-    padding: 15px 20px;
-    border-radius: 10px;
-
-    .current {
-      font-weight: $boldWg;
+  &__footer {
+    @include breakpoint(tablet) {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-  }
 
-  &__add {
-    @include widths;
+    .quanity {
+      @include widths;
 
-    display: flex;
-    justify-content: center;
-    gap: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-    color: white;
-    background-color: $orange;
-    padding: 15px;
+      background-color: #f7f8fd;
+      padding: 15px 20px;
+      border-radius: 10px;
 
-    border: none;
-    border-radius: 10px;
+      @include breakpoint(desktop) {
+        width: 45%;
+      }
 
-    .desc__cart > path {
-      fill: white;
+      &__btn {
+        cursor: pointer;
+
+        &:hover {
+          opacity: 0.4;
+        }
+      }
+
+      .current {
+        font-weight: $boldWg;
+      }
+    }
+
+    .add {
+      @include widths;
+      margin-top: 10px;
+      padding: 15px;
+
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+
+      color: white;
+      background-color: $orange;
+      box-shadow: 0px 20px 40px $orangeFaded;
+
+      border: none;
+      border-radius: 10px;
+
+      cursor: pointer;
+
+      @include breakpoint(desktop) {
+        margin-top: unset;
+        &:hover {
+          opacity: 0.4;
+        }
+      }
+
+      .add__cart > path {
+        fill: white;
+      }
     }
   }
 }

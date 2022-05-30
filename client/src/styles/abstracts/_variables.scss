@@ -2,6 +2,7 @@
 
 //Primary
 $orange: hsl(26, 100%, 55%);
+$orangeFaded: hsla(26, 100%, 55%, 0.504);
 $paleOrange: hsl(25, 100%, 94%);
 
 //Neutral
@@ -22,7 +23,7 @@ $smFz: $baseFz * 0.75;
 $mdFz: $baseFz * 1.25;
 $lgFz: $baseFz * 1.5;
 $xlFz: $baseFz * 2;
-$xxlFz: $baseFz * 2.3;
+$xxlFz: $baseFz * 2.5;
 
 // Weights
 $baseWg: 400;

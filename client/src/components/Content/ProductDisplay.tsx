@@ -42,11 +42,13 @@ const ProductDisplay = ({
     setCurrent(clicked);
   }
 
+  //big display
   const shoes = currentShoe.map(({ img, id, isActive }) => {
     if (isActive)
       return <img key={id} className="product" src={img} alt="Shoe Display" />;
   });
 
+  //selection at bottom
   const selection = currentShoe.map(({ img, id, isActive }) => {
     return (
       <div
