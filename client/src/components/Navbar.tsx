@@ -6,7 +6,7 @@ import Avatar from "../images/image-avatar.png";
 import Context from "../Context/Context";
 
 const Navbar = () => {
-  const { setShowCart } = useContext(Context);
+  const { setShowCart, cart } = useContext(Context);
 
   function showMenu() {
     let dropdown = document.getElementById("dropdown") as HTMLDivElement;
@@ -46,7 +46,10 @@ const Navbar = () => {
         </div>
       </div>
       <div className="navbar__right">
-        <Cart className="navbar__cart" onClick={() => handleCart()} />
+        <div onClick={() => handleCart()} className="navbar__cart">
+          <Cart className="cart__img" />
+          {cart ? <p className="cart__count"> {cart} </p> : null}
+        </div>
         <img src={Avatar} alt="avatar" className="avatar" />
       </div>
     </nav>

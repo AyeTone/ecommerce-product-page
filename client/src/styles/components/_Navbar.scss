@@ -11,7 +11,8 @@
   align-items: center;
 
   @include breakpoint(desktop) {
-    border-bottom: 0.2px solid grey;
+    padding-bottom: 30px;
+    border-bottom: 0.2px solid rgba(128, 128, 128, 0.417);
   }
 
   &__left {
@@ -88,6 +89,27 @@
   &__right {
     display: flex;
     align-items: center;
+
+    .navbar__cart {
+      position: relative;
+      padding: 5px;
+
+      .cart {
+        &__count {
+          position: absolute;
+          top: -2px;
+          right: -6px;
+
+          width: 23px;
+          text-align: center;
+
+          font-size: $smFz;
+          background-color: $orange;
+          color: $white;
+          border-radius: 10px;
+        }
+      }
+    }
 
     .avatar {
       width: 25px;

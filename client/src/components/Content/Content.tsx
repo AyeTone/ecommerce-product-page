@@ -36,7 +36,7 @@ const Content = () => {
   const [current, setCurrent] = useState(1);
 
   return (
-    <main>
+    <main className="content">
       <ProductDisplay
         currentShoe={currentShoe}
         setCurrentShoe={setCurrentShoe}

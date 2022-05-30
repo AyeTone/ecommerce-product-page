@@ -16,11 +16,6 @@ const ProductDisplay = ({
   current,
   setCurrent,
 }: Props) => {
-  const shoes = currentShoe.map(({ img, id, isActive }) => {
-    if (isActive)
-      return <img key={id} className="product" src={img} alt="Shoe Display" />;
-  });
-
   function nextImage() {
     if (current === 4) setCurrent(1);
     else setCurrent((prev: number) => prev + 1);
@@ -43,17 +38,41 @@ const ProductDisplay = ({
     });
   }, [current, setCurrentShoe]);
 
+  function selectDisplay(clicked: number) {
+    setCurrent(clicked);
+  }
+
+  const shoes = currentShoe.map(({ img, id, isActive }) => {
+    if (isActive)
+      return <img key={id} className="product" src={img} alt="Shoe Display" />;
+  });
+
+  const selection = currentShoe.map(({ img, id, isActive }) => {
+    return (
+      <div
+        onClick={() => selectDisplay(id)}
+        key={id}
+        className={isActive ? "selected" : undefined}
+      >
+        <img src={img} alt={`display-${id}`} className="selection" />
+      </div>
+    );
+  });
+
   return (
     <div className="productDisplay">
-      {shoes}
-      <div className="cover">
-        <button className="slide-btn">
-          <Previous onClick={() => prevImage()} />
-        </button>
-        <button className="slide-btn">
-          <Next onClick={() => nextImage()} />
-        </button>
+      <div>
+        {shoes}
+        <div className="cover">
+          <button className="slide-btn">
+            <Previous onClick={() => prevImage()} />
+          </button>
+          <button className="slide-btn">
+            <Next onClick={() => nextImage()} />
+          </button>
+        </div>
       </div>
+      <div className="shoe-btns">{selection}</div>
     </div>
   );
 };
