@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext } from "react";
 import Context from "../../Context/Context";
 import Image from "../../images/image-product-1-thumbnail.jpg";
 import Delete from "../../svgs/icon-delete.svg";

@@ -136,6 +136,11 @@
       border-radius: 10px;
 
       cursor: pointer;
+      transition: 0.4s;
+
+      &:active {
+        transform: scale(0.8);
+      }
 
       @include breakpoint(desktop) {
         margin-top: unset;

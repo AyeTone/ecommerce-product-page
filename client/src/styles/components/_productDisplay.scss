@@ -1,8 +1,50 @@
 @use "../abstracts/variables" as *;
 @use "../utils/breakpoints" as *;
 
+@mixin coverCopy {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@mixin btnCopy {
+  border: none;
+  border-radius: 50%;
+
+  background-color: $white;
+}
+@mixin productCopy {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@mixin shoeBtnsCopy {
+  .selection {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.3;
+    }
+  }
+
+  .selected {
+    border-radius: 20px;
+    border: 3px solid $orange;
+    img {
+      opacity: 0.3;
+    }
+  }
+}
+
 .productDisplay {
-  position: relative;
   height: 290px;
 
   @include breakpoint(desktop) {
@@ -13,46 +55,42 @@
     flex-direction: column;
   }
 
-  .product {
-    width: 100%;
+  &__display {
+    position: relative;
     height: 100%;
-    object-fit: cover;
+  }
+
+  .product {
+    @include productCopy;
 
     @include breakpoint(desktop) {
       height: 93%;
       object-fit: unset;
       border-radius: 20px;
+
+      cursor: pointer;
     }
   }
 
   .cover {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include coverCopy;
 
     @include breakpoint(desktop) {
       display: none;
     }
 
     .slide-btn {
+      @include btnCopy;
+
       margin: 0 10px;
       width: 40px;
       height: 40px;
-
-      border: none;
-      border-radius: 50%;
-
-      background-color: $white;
     }
   }
 
   .shoe-btns {
     display: none;
+    @include shoeBtnsCopy;
 
     @include breakpoint(desktop) {
       width: 100%;
@@ -60,27 +98,71 @@
       display: flex;
       gap: 30px;
     }
+  }
+}
 
-    .selection {
-      width: 100%;
-      height: 100%;
-      border-radius: 15px;
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
-      cursor: pointer;
+.lightBox {
+  @include coverCopy;
+
+  &__close {
+    margin: 10px 0;
+    float: right;
+
+    border: none;
+    background: none;
+
+    cursor: pointer;
+
+    svg > path {
+      fill: $white;
 
       &:hover {
-        opacity: 0.3;
-      }
-
-      object-fit: fill;
-    }
-
-    .selected {
-      border-radius: 20px;
-      border: 3px solid $orange;
-      img {
-        opacity: 0.3;
+        fill: $orange;
       }
     }
+  }
+
+  &__product {
+    @include productCopy;
+
+    margin-bottom: 10px;
+    border-radius: 20px;
+  }
+
+  &__btns {
+    @include btnCopy;
+
+    width: 50px;
+    height: 50px;
+
+    &:hover {
+      svg > path {
+        stroke: $orange;
+      }
+    }
+  }
+
+  .left {
+    transform: translateX(-30px);
+  }
+
+  .right {
+    transform: translateX(30px);
+  }
+
+  &__shoe-btns {
+    @include shoeBtnsCopy;
+
+    width: 80%;
+    gap: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

@@ -52,6 +52,8 @@
         position: relative;
         background-color: unset;
         left: 0 !important;
+
+        z-index: unset;
       }
 
       &__list {

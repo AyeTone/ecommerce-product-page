@@ -23,11 +23,12 @@ const Desc = () => {
     if (amount > 0) {
       setCart((prev: number) => prev + amount);
       setAmount(0);
+      setTotal(125);
+      setSubTotal(250);
     }
   }
 
   useEffect(() => {
-    console.log("ran");
     if (amount >= 1) {
       setTotal(125 * amount);
       setSubTotal(250 * amount);
