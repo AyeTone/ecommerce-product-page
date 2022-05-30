@@ -59,7 +59,7 @@ const ProductDisplay = ({ isLightBox }: Props) => {
         } else return shoe;
       });
     });
-  }, [current, setCurrentShoe]);
+  }, [current]);
 
   function selectDisplay(clicked: number) {
     setCurrent(clicked);
