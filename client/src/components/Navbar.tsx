@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ReactComponent as Menu } from "../svgs/icon-menu.svg";
 import { ReactComponent as Cart } from "../svgs/icon-cart.svg";
 import { ReactComponent as Close } from "../svgs/icon-close.svg";
@@ -11,8 +11,6 @@ const Navbar = () => {
   function showMenu() {
     let dropdown = document.getElementById("dropdown") as HTMLDivElement;
     dropdown.style.cssText = `
-    position: fixed;
-    transition: all 1s;
     left: 0;
     width: 100%;
     `;
@@ -22,6 +20,7 @@ const Navbar = () => {
     let dropdown = document.getElementById("dropdown") as HTMLDivElement;
     dropdown.style.cssText = `
         left: 1000px;
+        width: 0;
     `;
   }
 
@@ -29,32 +28,58 @@ const Navbar = () => {
     setShowCart((prev: boolean) => !prev);
   }
 
+  const [width, setWidth] = useState(0);
+
+  window.onresize = () => {
+    setWidth(window.screen.width);
+    if (width > 1020) {
+      closeMenu();
+    }
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar__left">
-        <h1 className="title">sneakers</h1>
-        <Menu onClick={() => showMenu()} className="menuBtn" />
-        <div id="dropdown" className="dropdown">
-          <ul className="dropdown__list">
-            <Close onClick={() => closeMenu()} className="list-items close" />
-            <li className="list-items">Collections</li>
-            <li className="list-items">Men</li>
-            <li className="list-items">Women</li>
-            <li className="list-items">About</li>
-            <li className="list-items">Contact</li>
+        <h1 className="navbar__left--title">sneakers</h1>
+        <Menu onClick={() => showMenu()} className="navbar__menu--btn" />
+        <div id="dropdown" className="navbar__menu">
+          <ul className="navbar__list">
+            <Close
+              onClick={() => closeMenu()}
+              className="navbar__list--item close"
+            />
+            <li className="navbar__list--item">Collections</li>
+            <li className="navbar__list--item">Men</li>
+            <li className="navbar__list--item">Women</li>
+            <li className="navbar__list--item">About</li>
+            <li className="navbar__list--item">Contact</li>
+          </ul>
+        </div>
+        <div className="navbar__tablet">
+          <ul className="navbar__list">
+            <Close
+              onClick={() => closeMenu()}
+              className="navbar__list--item close"
+            />
+            <li className="navbar__list--item">Collections</li>
+            <li className="navbar__list--item">Men</li>
+            <li className="navbar__list--item">Women</li>
+            <li className="navbar__list--item">About</li>
+            <li className="navbar__list--item">Contact</li>
           </ul>
         </div>
       </div>
+
       <div className="navbar__right">
         <div onClick={() => handleCart()} className="navbar__cart">
-          <Cart className="cart__img" />
-          {cart ? <p className="cart__count"> {cart} </p> : null}
+          <Cart />
+          {cart ? <p className="navbar__cart--count"> {cart} </p> : null}
         </div>
         <img
           onClick={() => handleCart()}
           src={Avatar}
           alt="avatar"
-          className="avatar"
+          className="navbar__avatar"
         />
       </div>
     </nav>

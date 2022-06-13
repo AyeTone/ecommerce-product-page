@@ -1,6 +1,29 @@
 @use "../abstracts/variables" as *;
 @use "../utils/breakpoints" as *;
 
+@mixin underline {
+  &::after {
+    content: " ";
+    position: absolute;
+    bottom: -50px;
+    right: 0;
+    width: 0;
+    height: 3px;
+
+    background-color: $orange;
+    transition: 0.2s;
+  }
+
+  &:hover {
+    color: $black;
+
+    &::after {
+      width: 100%;
+      left: 0;
+    }
+  }
+}
+
 .navbar {
   position: relative;
   padding: 20px;
@@ -9,153 +32,159 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
 
-  @include breakpoint(desktop) {
-    padding-bottom: 30px;
+/*===================
+
+      NAVBAR LEFT
+
+==================*/
+
+.navbar__left {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+
+  &--title {
+    font-size: $xlFz;
+    font-weight: $boldWg;
+  }
+}
+
+.navbar__menu--btn {
+  margin-right: 16px;
+  transform: translateY(3px);
+}
+
+.navbar__menu {
+  position: fixed;
+
+  top: 0;
+  left: 1000px;
+  z-index: 1;
+  transition: all 1s;
+
+  background-color: $backdrop;
+}
+
+.navbar__list {
+  height: 100vh;
+  width: 70%;
+
+  background-color: $white;
+  list-style-type: none;
+
+  &--item {
+    cursor: no-drop;
+    font-weight: $boldWg;
+    margin: 20px 0;
+  }
+}
+
+.navbar__tablet {
+  display: none;
+}
+
+/*==============
+
+      NAVBAR RIGHT
+
+==============*/
+
+.navbar__right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar__cart {
+  position: relative;
+  padding: 5px;
+  cursor: pointer;
+
+  display: flex;
+}
+
+.navbar__cart--count {
+  position: absolute;
+  top: -2px;
+  right: -6px;
+
+  width: 24px;
+  text-align: center;
+
+  font-size: $smFz;
+  background-color: $orange;
+  color: $white;
+  border-radius: 12px;
+}
+
+.navbar__avatar {
+  width: 40px;
+  margin-left: 12px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+}
+
+/* 
+
+      BREAKPOINTS
+
+*/
+
+@include breakpoint(desktop) {
+  .navbar {
+    padding-bottom: 32px;
     border-bottom: 0.2px solid rgba(128, 128, 128, 0.417);
   }
 
-  &__left {
+  .navbar__left {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .navbar__menu--btn {
+    display: none;
+  }
+
+  .navbar__menu {
+    display: none;
+    left: 1000px;
+  }
+
+  .navbar__list {
+    height: unset;
+    width: 100%;
+
     display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
+    gap: 40px;
 
-    @include breakpoint(desktop) {
-      flex-direction: row;
-      justify-content: center;
+    .close {
+      display: none;
     }
 
-    .title {
-      font-size: $xlFz;
-      font-weight: $boldWg;
-    }
+    &--item {
+      @include underline;
+      position: relative;
+      font-weight: $baseWg;
+      color: $darkGrayishBlue;
 
-    .menuBtn {
-      margin-right: 15px;
-      transform: translateY(3px);
-
-      @include breakpoint(desktop) {
-        display: none;
-      }
-    }
-
-    .dropdown {
-      position: absolute;
-
-      top: 0;
-      left: 1000px;
-      z-index: 1;
-
-      background-color: $backdrop;
-
-      @include breakpoint(desktop) {
-        position: relative;
-        background-color: unset;
-        left: 0 !important;
-
-        z-index: unset;
-      }
-
-      &__list {
-        height: 100vh;
-        width: 70%;
-
-        background-color: $white;
-        list-style-type: none;
-
-        @include breakpoint(desktop) {
-          height: unset;
-          width: 100%;
-
-          display: flex;
-          gap: 40px;
-
-          .close {
-            display: none;
-          }
-        }
-
-        .list-items {
-          font-weight: $boldWg;
-          margin: 20px 0;
-
-          @include breakpoint(desktop) {
-            position: relative;
-            font-weight: $baseWg;
-            color: $darkGrayishBlue;
-
-            cursor: pointer;
-            transition: 0.3s;
-
-            &::after {
-              content: " ";
-              position: absolute;
-              bottom: -50px;
-              left: 0;
-              width: 0;
-              height: 3px;
-
-              background-color: $orange;
-              transition: 0.2s;
-            }
-
-            &:hover {
-              color: $black;
-
-              &::after {
-                width: 100%;
-              }
-            }
-          }
-        }
-      }
+      transition: 0.3s;
     }
   }
 
-  &__right {
-    display: flex;
-    align-items: center;
+  .navbar__tablet {
+    display: block;
+  }
 
-    .navbar__cart {
-      position: relative;
-      padding: 5px;
-      cursor: pointer;
+  .navbar__avatar {
+    width: 44px;
+    margin-left: 32px;
 
-      display: flex;
-
-      .cart {
-        &__count {
-          position: absolute;
-          top: -2px;
-          right: -6px;
-
-          width: 23px;
-          text-align: center;
-
-          font-size: $smFz;
-          background-color: $orange;
-          color: $white;
-          border-radius: 10px;
-        }
-      }
-    }
-
-    .avatar {
-      width: 25px;
-      margin-left: 20px;
-      border: 2px solid transparent;
-
-      cursor: pointer;
-
-      @include breakpoint(desktop) {
-        width: 45px;
-        margin-left: 30px;
-
-        &:hover {
-          border: 2px solid $orange;
-          border-radius: 50%;
-        }
-      }
+    &:hover {
+      border: 2px solid $orange;
     }
   }
 }
