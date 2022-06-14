@@ -8,152 +8,158 @@
 
 .desc {
   display: grid;
-  gap: 15px;
+  gap: 16px;
+  padding: 16px;
+}
+
+.desc__title {
+  text-transform: uppercase;
+  color: $orange;
+  font-weight: $boldWg;
+
+  letter-spacing: 4px;
+}
+
+.desc__sub-title {
+  font-size: $xlFz;
+  font-weight: $boldWg;
+}
+
+.desc__para {
+  color: $darkGrayishBlue;
+  line-height: 32px;
+}
+
+.desc__pricing--wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.desc__pricing--row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.desc__pricing--total {
+  font-size: $lgFz;
+  font-weight: $boldWg;
+}
+
+.desc__pricing--sale {
+  padding: 3px 7px;
+  border-radius: 5px;
+
+  color: $orange;
+  background-color: $paleOrange;
+}
+
+.desc__pricing--slashed {
+  color: $grayishBlue;
+}
+
+.desc__quanity {
+  @include widths;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: #f7f8fd;
+  padding: 15px 20px;
+  border-radius: 10px;
+}
+
+.desc__quanity--current {
+  font-weight: $boldWg;
+}
+
+.desc__quanity--btn {
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    opacity: 0.4;
+  }
+}
+
+.desc__add--btn {
+  @include widths;
+  margin-top: 10px;
   padding: 15px;
 
-  @include breakpoint(desktop) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+
+  color: white;
+  background-color: $orange;
+  box-shadow: 0px 20px 40px $orangeFaded;
+
+  border: none;
+  border-radius: 10px;
+
+  cursor: pointer;
+  transition: 0.4s;
+
+  &:active {
+    transform: scale(0.8);
+  }
+}
+
+.desc__add--cart > path {
+  fill: white;
+}
+
+/* 
+
+      BREAKPOINTS
+
+*/
+
+@include breakpoint(desktop) {
+  .desc {
     padding: 70px;
 
     gap: unset;
   }
 
-  &__company {
-    text-transform: uppercase;
-    color: $orange;
-    font-weight: $boldWg;
+  .desc__title {
+    font-size: $smFz;
 
-    letter-spacing: 3px;
-
-    @include breakpoint(desktop) {
-      font-size: $smFz;
-
-      display: flex;
-      align-items: flex-end;
-      margin-bottom: 13px;
-    }
-  }
-
-  &__title {
-    font-size: $xlFz;
-    font-weight: $boldWg;
-
-    @include breakpoint(desktop) {
-      font-size: $xxlFz;
-    }
-  }
-
-  &__desc {
-    color: $darkGrayishBlue;
-    line-height: 30px;
-  }
-
-  &__pricing {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    @include breakpoint(desktop) {
-      display: block;
-    }
-
-    .total-sale {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-
-      @include breakpoint(desktop) {
-        margin-bottom: 10px;
-      }
-
-      .total {
-        font-size: $lgFz;
-        font-weight: $boldWg;
-      }
-
-      .sale {
-        padding: 3px 7px;
-        border-radius: 5px;
-
-        color: $orange;
-        background-color: $paleOrange;
-      }
-    }
-
-    .slashed {
-      color: $grayishBlue;
-    }
+    align-items: flex-end;
+    margin-bottom: 12px;
   }
 
-  &__footer {
-    @include breakpoint(tablet) {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+  .desc__sub-title {
+    font-size: $xxlFz;
+  }
 
-    .quanity {
-      @include widths;
+  .desc__pricing--wrapper {
+    display: block;
+  }
 
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+  .desc__pricing--row {
+    margin-bottom: 10px;
+  }
 
-      background-color: #f7f8fd;
-      padding: 15px 20px;
-      border-radius: 10px;
+  .desc__footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 
-      @include breakpoint(desktop) {
-        width: 45%;
-      }
+  .desc__quanity {
+    width: 45%;
+  }
 
-      &__btn {
-        cursor: pointer;
-        transition: 0.3s;
-
-        &:hover {
-          opacity: 0.4;
-        }
-      }
-
-      .current {
-        font-weight: $boldWg;
-      }
-    }
-
-    .add {
-      @include widths;
-      margin-top: 10px;
-      padding: 15px;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 15px;
-
-      color: white;
-      background-color: $orange;
-      box-shadow: 0px 20px 40px $orangeFaded;
-
-      border: none;
-      border-radius: 10px;
-
-      cursor: pointer;
-      transition: 0.4s;
-
-      &:active {
-        transform: scale(0.8);
-      }
-
-      @include breakpoint(desktop) {
-        margin-top: unset;
-        &:hover {
-          opacity: 0.4;
-        }
-      }
-
-      .add__cart > path {
-        fill: white;
-      }
+  .desc__add--btn {
+    margin-top: unset;
+    &:hover {
+      opacity: 0.4;
     }
   }
 }

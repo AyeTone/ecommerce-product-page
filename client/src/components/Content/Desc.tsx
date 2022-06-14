@@ -37,28 +37,31 @@ const Desc = () => {
 
   return (
     <div className="desc">
-      <h1 className="desc__company">Sneaker Company</h1>
-      <h2 className="desc__title">Fall Limited Edition Sneakers</h2>
-      <p className="desc__desc">
+      <h1 className="desc__title">Sneaker Company</h1>
+      <h2 className="desc__sub-title">Fall Limited Edition Sneakers</h2>
+      <p className="desc__para">
         These low-profile sneakers are your perfect casual wear companion.
         Featuring a durable rubber outer sole, they'll withstand everything the
         weather can offer.
       </p>
-      <div className="desc__pricing">
-        <div className="total-sale">
-          <p className="total">${total}.00</p>
-          <p className="sale">50%</p>
+      <div className="desc__pricing--wrapper">
+        <div className="desc__pricing--row">
+          <p className="desc__pricing--total">${total}.00</p>
+          <p className="desc__pricing--sale">50%</p>
         </div>
-        <s className="slashed">${subTotal}.00</s>
+        <s className="desc__pricing--slashed">${subTotal}.00</s>
       </div>
       <div className="desc__footer">
-        <div className="quanity">
-          <Minus onClick={() => removeProduct()} className="quanity__btn" />
-          <p className="current">{amount}</p>
-          <Plus onClick={() => addProduct()} className="quanity__btn" />
+        <div className="desc__quanity">
+          <Minus
+            onClick={() => removeProduct()}
+            className="desc__quanity--btn"
+          />
+          <p className="desc__quanity--current">{amount}</p>
+          <Plus onClick={() => addProduct()} className="desc__quanity--btn" />
         </div>
-        <button onClick={() => addToCart()} className="add">
-          <Cart className="add__cart" />
+        <button onClick={() => addToCart()} className="desc__add--btn">
+          <Cart className="desc__add--cart" />
           Add to cart
         </button>
       </div>
