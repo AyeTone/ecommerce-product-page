@@ -11,35 +11,50 @@ const Cart = () => {
     setCart(0);
   }
 
+  function notReal() {
+    alert("This is not a real store. Thank you for clicking though.");
+  }
+
   return (
     <div className="cart">
       <div className="cart__wrapper">
         <div className="cart__header">
-          <h3 className="title">Cart</h3>
+          <h3 className="cart__title">Cart</h3>
         </div>
-        <div className="cart__content">
+
+        <div className="cart__body">
           {cart === 0 ? (
-            <p className="empty"> Your cart is empty</p>
+            <p className="cart__body--empty"> Your cart is empty</p>
           ) : (
             <>
-              <div className="item">
-                <div className="items">
-                  <img className="img" src={Image} alt="cart item" />
-                  <div className="details">
-                    <p className="label">Fall Limited Edition Sneakers</p>
-                    <p className="pricing">
-                      $125 x {cart} <span className="total">${total}.00</span>
+              <div className="cart__list">
+                <div className="cart__item">
+                  <img
+                    className="cart__item--img"
+                    src={Image}
+                    alt="cart item"
+                  />
+                  <div className="cart__desc">
+                    <p className="cart__desc--label">
+                      Fall Limited Edition Sneakers
+                    </p>
+                    <p className="cart__desc--pricing">
+                      <s>$125</s> x {cart}{" "}
+                      <span className="cart__desc--total">${total}.00</span>
                     </p>
                   </div>
                 </div>
                 <img
                   onClick={() => deleteItems()}
-                  className="delete"
+                  className="cart__delete"
                   src={Delete}
                   alt="delele item"
                 />
               </div>
-              <button className="checkout"> Checkout</button>
+              <button className="cart__checkout" onClick={() => notReal()}>
+                {" "}
+                Checkout
+              </button>
             </>
           )}
         </div>

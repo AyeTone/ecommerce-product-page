@@ -4,131 +4,158 @@
 .cart {
   position: fixed;
   width: 100%;
-  top: 10.5%;
+  top: 10%;
 
   display: flex;
   justify-content: center;
+}
 
-  @include breakpoint(desktop) {
-    width: 30%;
+.cart__wrapper {
+  width: 90%;
+
+  background-color: $white;
+  border-radius: 10px;
+  box-shadow: 2px 20px 20px rgba(128, 128, 128, 0.459);
+}
+
+.cart__header {
+  padding: 20px;
+  border-bottom: 0.5px solid $grayishBlue;
+
+  &__title {
+    font-weight: $boldWg;
+  }
+}
+
+.cart__body {
+  width: 100%;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+
+  &--empty {
+    height: 150px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: $darkGrayishBlue;
+    font-weight: $boldWg;
+  }
+}
+
+.cart__list {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.cart__item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  &--img {
+    max-width: 40px;
+    border-radius: 5px;
+  }
+}
+
+.cart__desc {
+  margin-left: 15px;
+
+  &--label {
+    color: $darkGrayishBlue;
+    width: 80%;
+    margin-bottom: 3px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &--pricing {
+    color: $darkGrayishBlue;
+  }
+
+  &--total {
+    margin-left: 5px;
+    color: $black;
+    font-weight: $boldWg;
+  }
+}
+
+.cart__delete {
+  width: 20px;
+  height: 20px;
+}
+
+.cart__checkout {
+  margin: 0 auto;
+  margin-bottom: 10px;
+  width: 90%;
+  padding: 10px 0;
+
+  background-color: $orange;
+  color: white;
+  border: 1px solid transparent;
+  border-radius: 10px;
+
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+
+  &:hover {
+    transform: scale(1.03);
+    background-color: white;
+    font-weight: $boldWg;
+    color: $orange;
+    border-color: $orange;
+
+    box-shadow: 0 10px 40px 0 rgba(62, 62, 62, 0.43);
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+/* 
+
+        BREAKPOINTS
+
+*/
+
+@include breakpoint(desktop) {
+  .cart {
+    width: 100%;
+    max-width: 450px;
     right: 5%;
   }
 
-  &__wrapper {
-    width: 90%;
+  .cart__wrapper {
+    width: 70%;
+  }
 
-    background-color: $white;
-    border-radius: 10px;
-    box-shadow: 2px 20px 20px rgba(128, 128, 128, 0.459);
+  .cart__body {
+    padding: 8px;
+    gap: 10px;
 
-    @include breakpoint(desktop) {
-      width: 70%;
+    &--empty {
+      height: 100px;
     }
   }
 
-  &__header {
-    padding: 20px;
-    border-bottom: 0.5px solid $grayishBlue;
-
-    .title {
-      font-weight: $boldWg;
-    }
+  .cart__item {
+    padding: 10px;
   }
 
-  &__content {
-    width: 100%;
-    padding: 20px;
+  .cart__list {
+    padding: 10px;
+  }
 
-    display: flex;
-    flex-direction: column;
-
-    @include breakpoint(desktop) {
-      padding: 15px;
-      gap: 10px;
-    }
-
-    .empty {
-      height: 150px;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      color: $darkGrayishBlue;
-      font-weight: $boldWg;
-
-      @include breakpoint(desktop) {
-        height: 100px;
-      }
-    }
-
-    .item {
-      display: flex;
-      align-items: center;
-      padding: 20px;
-
-      @include breakpoint(desktop) {
-        padding: 10px;
-      }
-
-      .items {
-        display: flex;
-        align-items: center;
-        width: 100%;
-
-        .img {
-          max-width: 40px;
-          border-radius: 5px;
-        }
-
-        .details {
-          margin-left: 15px;
-
-          .label {
-            color: $darkGrayishBlue;
-            width: 80%;
-            margin-bottom: 3px;
-
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-
-            @include breakpoint(desktop) {
-              text-overflow: unset;
-              overflow: unset;
-
-              font-size: $smFz;
-            }
-          }
-
-          .pricing {
-            color: $darkGrayishBlue;
-          }
-
-          .total {
-            margin-left: 5px;
-            color: $black;
-            font-weight: $boldWg;
-          }
-        }
-
-        .delete {
-          width: 25px;
-          height: 25px;
-        }
-      }
-    }
-
-    .checkout {
-      margin: 0 auto;
-      margin-bottom: 10px;
-      width: 90%;
-      padding: 10px 0;
-
-      background-color: $orange;
-      color: white;
-      border: none;
-      border-radius: 10px;
-    }
+  .cart__desc--label {
+    font-size: $smFz;
   }
 }
