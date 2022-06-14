@@ -1,10 +1,14 @@
 @use "../abstracts/variables" as *;
 @use "../utils/breakpoints" as *;
 
+/* Mixins */
+
 @mixin widths {
   margin: 0 auto;
   width: 95%;
 }
+
+/* CSS Start */
 
 .desc {
   display: grid;
@@ -48,7 +52,7 @@
 }
 
 .desc__pricing--sale {
-  padding: 3px 7px;
+  padding: 4px 8px;
   border-radius: 5px;
 
   color: $orange;
@@ -59,6 +63,10 @@
   color: $grayishBlue;
 }
 
+.desc__footer {
+  margin-top: 8px;
+}
+
 .desc__quanity {
   @include widths;
 
@@ -67,7 +75,7 @@
   justify-content: space-between;
 
   background-color: #f7f8fd;
-  padding: 15px 20px;
+  padding: 16px 20px;
   border-radius: 10px;
 }
 
@@ -86,13 +94,13 @@
 
 .desc__add--btn {
   @include widths;
-  margin-top: 10px;
-  padding: 15px;
+  margin-top: 12px;
+  padding: 16px;
 
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 16px;
 
   color: white;
   background-color: $orange;
@@ -121,8 +129,8 @@
 
 @include breakpoint(desktop) {
   .desc {
-    padding: 70px;
-
+    padding: 40px;
+    padding-top: 20px;
     gap: unset;
   }
 
@@ -143,17 +151,17 @@
   }
 
   .desc__pricing--row {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
 
   .desc__footer {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
   }
 
   .desc__quanity {
-    width: 45%;
+    width: 50%;
   }
 
   .desc__add--btn {

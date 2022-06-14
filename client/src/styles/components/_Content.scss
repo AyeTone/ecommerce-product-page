@@ -1,8 +1,8 @@
 @use "../abstracts/variables" as *;
 @use "../utils/breakpoints" as *;
 
-.content {
-  @include breakpoint(desktop) {
+@include breakpoint(desktop) {
+  .content {
     margin-top: 0px;
 
     display: grid;

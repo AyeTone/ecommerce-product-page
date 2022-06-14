@@ -1,11 +1,13 @@
 @use "../abstracts/variables" as *;
 @use "../utils/breakpoints" as *;
 
+/* Mixins / Animations */
+
 @mixin underline {
   &::after {
     content: " ";
     position: absolute;
-    bottom: -50px;
+    bottom: -46px;
     right: 0;
     width: 0;
     height: 3px;
@@ -23,6 +25,17 @@
     }
   }
 }
+
+@keyframes slide {
+  30% {
+    transform: translateX(8px);
+  }
+  70% {
+    transform: translateX(0);
+  }
+}
+
+/* CSS Starts */
 
 .navbar {
   position: relative;
@@ -103,6 +116,19 @@
   cursor: pointer;
 
   display: flex;
+  transition: all 300ms ease;
+
+  path {
+    transition: all 300ms ease;
+  }
+
+  &:hover {
+    animation: slide 2s infinite ease-in-out;
+
+    path {
+      fill: $orange;
+    }
+  }
 }
 
 .navbar__cart--count {
@@ -137,7 +163,7 @@
 
 @include breakpoint(desktop) {
   .navbar {
-    padding-bottom: 32px;
+    padding-bottom: 24px;
     border-bottom: 0.2px solid rgba(128, 128, 128, 0.417);
   }
 
@@ -160,7 +186,7 @@
     width: 100%;
 
     display: flex;
-    gap: 40px;
+    gap: 20px;
 
     .close {
       display: none;

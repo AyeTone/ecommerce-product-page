@@ -168,7 +168,8 @@
 @include breakpoint(desktop) {
   .product-display {
     height: unset;
-    padding: 50px;
+    padding: 76px;
+    padding-top: 40px;
 
     display: flex;
     flex-direction: column;
