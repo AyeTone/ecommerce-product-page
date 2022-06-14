@@ -51,12 +51,14 @@
   }
 }
 
-.navbar__menu--btn {
+.navbar__dropdown--btn {
   margin-right: 16px;
   transform: translateY(3px);
+
+  cursor: pointer;
 }
 
-.navbar__menu {
+.navbar__dropdown {
   position: fixed;
 
   top: 0;
@@ -75,7 +77,6 @@
   list-style-type: none;
 
   &--item {
-    cursor: no-drop;
     font-weight: $boldWg;
     margin: 20px 0;
   }
@@ -145,11 +146,11 @@
     justify-content: center;
   }
 
-  .navbar__menu--btn {
+  .navbar__dropdown--btn {
     display: none;
   }
 
-  .navbar__menu {
+  .navbar__dropdown {
     display: none;
     left: 1000px;
   }
@@ -172,6 +173,7 @@
       color: $darkGrayishBlue;
 
       transition: 0.3s;
+      cursor: no-drop;
     }
   }
 
