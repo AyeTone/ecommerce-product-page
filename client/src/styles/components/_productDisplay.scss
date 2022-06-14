@@ -1,6 +1,8 @@
 @use "../abstracts/variables" as *;
 @use "../utils/breakpoints" as *;
 
+/* Mixins */
+
 @mixin coverCopy {
   position: absolute;
   top: 0;
@@ -11,7 +13,7 @@
   justify-content: space-between;
   align-items: center;
 }
-@mixin btnCopy {
+@mixin slideBtns {
   border: none;
   border-radius: 50%;
 
@@ -22,11 +24,12 @@
   height: 100%;
   object-fit: cover;
 }
-@mixin shoeBtnsCopy {
-  .selection {
+@mixin selectionBtns {
+  img {
     width: 100%;
     height: 100%;
     border-radius: 15px;
+    object-fit: cover;
 
     cursor: pointer;
 
@@ -36,7 +39,7 @@
   }
 
   .selected {
-    border-radius: 20px;
+    border-radius: 15px;
     border: 3px solid $orange;
     img {
       opacity: 0.3;
@@ -44,10 +47,126 @@
   }
 }
 
-.productDisplay {
-  height: 290px;
+/* CSS START */
 
-  @include breakpoint(desktop) {
+.product-display {
+  height: 290px;
+}
+
+.product-display__wrapper {
+  position: relative;
+  height: 100%;
+}
+
+.product-display__img {
+  @include productCopy;
+}
+
+.product-display__cover {
+  @include coverCopy;
+}
+
+.product-display__slide-btn {
+  @include slideBtns;
+
+  margin: 0 10px;
+  width: 40px;
+  height: 40px;
+}
+
+.product-display__selection {
+  display: none;
+  @include selectionBtns;
+}
+
+/* 
+
+    LIGHTBOX
+
+*/
+
+.light-box {
+  @include coverCopy;
+}
+
+.light-box__img {
+  @include productCopy;
+
+  margin-bottom: 10px;
+  border-radius: 20px;
+}
+
+.light-box__close {
+  margin: 10px 0;
+  float: right;
+
+  border: none;
+  background: none;
+
+  cursor: pointer;
+  transition: all 300ms ease;
+
+  &:hover > svg > path {
+    fill: $orange;
+  }
+
+  svg > path {
+    fill: $white;
+  }
+}
+
+.light-box__container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.light-box__slide-btns {
+  @include slideBtns;
+  width: 48px;
+  height: 48px;
+
+  transition: all 300ms ease;
+  cursor: pointer;
+
+  &:hover {
+    width: 52px;
+    height: 52px;
+
+    svg > path {
+      stroke: $orange;
+    }
+  }
+
+  &:active {
+    height: 44px;
+    width: 44px;
+  }
+
+  &--left {
+    transform: translateX(-28px);
+  }
+
+  &--right {
+    transform: translateX(28px);
+  }
+}
+
+.light-box__selection {
+  @include selectionBtns;
+  width: 80%;
+  gap: 25px;
+  display: flex;
+}
+
+/* 
+
+      BREAKPOINTS
+
+*/
+
+@include breakpoint(desktop) {
+  .product-display {
     height: unset;
     padding: 50px;
 
@@ -55,114 +174,22 @@
     flex-direction: column;
   }
 
-  &__display {
-    position: relative;
-    height: 100%;
-  }
-
-  .product {
-    @include productCopy;
-
-    @include breakpoint(desktop) {
-      height: 93%;
-      object-fit: unset;
-      border-radius: 20px;
-
-      cursor: pointer;
-    }
-  }
-
-  .cover {
-    @include coverCopy;
-
-    @include breakpoint(desktop) {
-      display: none;
-    }
-
-    .slide-btn {
-      @include btnCopy;
-
-      margin: 0 10px;
-      width: 40px;
-      height: 40px;
-    }
-  }
-
-  .shoe-btns {
-    display: none;
-    @include shoeBtnsCopy;
-
-    @include breakpoint(desktop) {
-      width: 100%;
-
-      display: flex;
-      gap: 30px;
-    }
-  }
-}
-
-.container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.lightBox {
-  @include coverCopy;
-
-  &__close {
-    margin: 10px 0;
-    float: right;
-
-    border: none;
-    background: none;
+  .product-display__img {
+    height: 93%;
+    object-fit: unset;
+    border-radius: 20px;
 
     cursor: pointer;
-
-    svg > path {
-      fill: $white;
-
-      &:hover {
-        fill: $orange;
-      }
-    }
   }
 
-  &__product {
-    @include productCopy;
-
-    margin-bottom: 10px;
-    border-radius: 20px;
+  .product-display__cover {
+    display: none;
   }
 
-  &__btns {
-    @include btnCopy;
+  .product-display__selection {
+    width: 100%;
 
-    width: 50px;
-    height: 50px;
-
-    &:hover {
-      svg > path {
-        stroke: $orange;
-      }
-    }
-  }
-
-  .left {
-    transform: translateX(-30px);
-  }
-
-  .right {
-    transform: translateX(30px);
-  }
-
-  &__shoe-btns {
-    @include shoeBtnsCopy;
-
-    width: 80%;
-    gap: 25px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    gap: 30px;
   }
 }

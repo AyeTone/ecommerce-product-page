@@ -75,15 +75,15 @@ const ProductDisplay = ({ isLightBox }: Props) => {
   }, [current, changed]);
 
   //big display
-  const shoes = currentShoe.map(({ img, id, isActive }) => {
+  const product = currentShoe.map(({ img, id, isActive }) => {
     if (isActive)
       return (
         <img
           onClick={() => toggleLightBox()}
           key={id}
-          className={isLightBox ? "lightBox__product" : "product"}
+          className={isLightBox ? "light-box__img" : "product-display__img"}
           src={img}
-          alt="Shoe Display"
+          alt={`Shoe${id} Display`}
         />
       );
   });
@@ -96,42 +96,54 @@ const ProductDisplay = ({ isLightBox }: Props) => {
         key={id}
         className={isActive ? "selected" : undefined}
       >
-        <img src={img} alt={`display-${id}`} className="selection" />
+        <img src={img} alt={`display-${id}`} />
       </div>
     );
   });
 
   return (
-    <div className="productDisplay">
+    <div className="product-display">
       {isLightBox && (
         <div>
           <button
             onClick={() => setShowLightBox(false)}
-            className="lightBox__close"
+            className="light-box__close"
           >
             <Close />
           </button>
         </div>
       )}
-      <div className="productDisplay__display">
-        {shoes}
-        <div className={isLightBox ? "lightBox" : "cover"}>
+      <div className="product-display__wrapper">
+        {product}
+        <div className={isLightBox ? "light-box" : "product-display__cover"}>
           <button
             onClick={() => prevImage()}
-            className={isLightBox ? "lightBox__btns left" : "slide-btn"}
+            className={
+              isLightBox
+                ? "light-box__slide-btns--left light-box__slide-btns "
+                : "product-display__slide-btn"
+            }
           >
             <Previous />
           </button>
           <button
             onClick={() => nextImage()}
-            className={isLightBox ? "lightBox__btns right" : "slide-btn"}
+            className={
+              isLightBox
+                ? "light-box__slide-btns--right light-box__slide-btns"
+                : "product-display__slide-btn"
+            }
           >
             <Next />
           </button>
         </div>
       </div>
-      <div className={isLightBox ? "container" : undefined}>
-        <div className={isLightBox ? "lightBox__shoe-btns" : "shoe-btns"}>
+      <div className={isLightBox ? "light-box__container" : undefined}>
+        <div
+          className={
+            isLightBox ? "light-box__selection" : "product-display__selection"
+          }
+        >
           {selection}
         </div>
       </div>
