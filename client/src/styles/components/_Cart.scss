@@ -1,6 +1,30 @@
 @use "../abstracts/variables" as *;
 @use "../utils/breakpoints" as *;
 
+@keyframes shake {
+  20% {
+    transform: rotate(10deg);
+  }
+  30% {
+    transform: rotate(-10deg);
+  }
+  40% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  60% {
+    transform: rotate(10deg);
+  }
+  70% {
+    transform: rotate(-10deg);
+  }
+  80% {
+    transform: rotate(0);
+  }
+}
+
 .cart {
   position: fixed;
   width: 100%;
@@ -90,6 +114,12 @@
 .cart__delete {
   width: 20px;
   height: 20px;
+
+  cursor: pointer;
+
+  &:hover {
+    animation: shake 750ms infinite ease;
+  }
 }
 
 .cart__checkout {
